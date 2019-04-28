@@ -1,8 +1,21 @@
-# iCards
-A container of views (like cards) can be dragged!<br>
----
-视图容器，视图以卡片形式层叠放置，可滑动。<br>
----
+
+
+### 本例
+
+根据项目需求特别定制模拟卡片左右滑动动画效果。当用户左滑卡片时，会将位于当前顶部的卡片滑动到卡片堆的底部；右滑卡片时，将位于最底部的卡片滑动卡片堆的顶部。
+
+用法：
+
+直接将src的文件复制到工程即可。
+
+
+
+### 以下来自原项目说明
+
+#### iCards
+
+##### A container of views (like cards) can be dragged!<br>
+##### 视图容器，视图以卡片形式层叠放置，可滑动。<br>
 There are only visible cards in memory, after you drag and removed the top one, it will be reused as the last one.<br>
 内存中只会生成可见的卡片，顶部的卡片被划走之后，会作为最后一张卡片循环利用。<br>
 
@@ -23,8 +36,7 @@ end
 ![iCards](https://github.com/DingHub/ScreenShots/blob/master/iCards/1.png)
 ![iCards](https://github.com/DingHub/ScreenShots/blob/master/iCards/3.png)
 
-Usage:<br>
----
+#### Usage:<br>
 Here is an example:<br>
 用法示例：<br>
 

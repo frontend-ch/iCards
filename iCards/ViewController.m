@@ -13,8 +13,11 @@
 
 @interface ViewController () <iCardsDataSource, iCardsDelegate>
 
+
+
 @property (weak, nonatomic) IBOutlet iCards *cards;
 @property (nonatomic, strong) NSMutableArray *cardsData;
+@property (nonatomic, strong) NSMutableArray *cardsColor;
 
 @end
 
@@ -23,6 +26,7 @@
 - (NSMutableArray *)cardsData {
     if (_cardsData == nil) {
         _cardsData = [NSMutableArray array];
+        _cardsColor = [NSMutableArray array];
     }
     return _cardsData;
 }
@@ -38,8 +42,9 @@
 }
 
 - (void)makeCardsData {
-    for (int i=0; i<100; i++) {
+    for (int i=0; i<4; i++) {
         [self.cardsData addObject:@(i)];
+        [self.cardsColor addObject:[Color randomColor].CGColor];
     }
 }
 
@@ -92,26 +97,26 @@
         label.layer.cornerRadius = 5;
     }
     label.text = [self.cardsData[index] stringValue];
-    label.layer.backgroundColor = [Color randomColor].CGColor;
+    label.layer.backgroundColor = (__bridge CGColorRef _Nullable)(self.cardsColor[index]);
     return label;
 }
 
 #pragma mark - iCardsDelegate methods
 
 - (void)cards:(iCards *)cards beforeSwipingItemAtIndex:(NSInteger)index {
-    NSLog(@"Begin swiping card %ld!", index);
+    NSLog(@"Begin swiping card %ld!", (long)index);
 }
 
 - (void)cards:(iCards *)cards didLeftRemovedItemAtIndex:(NSInteger)index {
-    NSLog(@"<--%ld", index);
+    NSLog(@"<--%ld", (long)index);
 }
 
 - (void)cards:(iCards *)cards didRightRemovedItemAtIndex:(NSInteger)index {
-    NSLog(@"%ld-->", index);
+    NSLog(@"%ld-->", (long)index);
 }
 
 - (void)cards:(iCards *)cards didRemovedItemAtIndex:(NSInteger)index {
-    NSLog(@"index of removed card: %ld", index);
+    NSLog(@"index of removed card: %ld", (long)index);
 }
 
 @end
